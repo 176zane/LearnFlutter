@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/about/about.dart';
 import 'package:flutter_test_app/home/home.dart';
+import 'package:flutter_test_app/home/route_example.dart';
+import 'package:flutter_test_app/home/route_second.dart';
 import 'package:flutter_test_app/pages/layout_page.dart';
 import 'package:http/http.dart';
 
@@ -15,11 +17,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
-      
+      initialRoute: '/',
       routes: {
-        '/':(context) => const MyHomePage(title: 'Flutter Demo Home Page'),
+        '/':(context) => const MyHomePage(title: 'Flutter Demo'),
+        '/route_example' : (context) => const RouteExample(),
+        '/route_second' : (context) => const RouteSecond(),
         '/layout' : (context) => const LayoutPage(),
       },
     );
@@ -43,11 +47,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int seleclectedIndex = 0;
   final screens = [
-    Home(),
-    About(),
+    const Home(),
+    const About(),
   ];
-
-
 
   @override
   Widget build(BuildContext context) {

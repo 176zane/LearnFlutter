@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
 
   @override
   State<Home> createState() => _HomeState();
@@ -25,7 +27,14 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: const Text('首页'),
       ),
-      body:const  Text('首页'),
+      body:Center(
+        child: ElevatedButton(
+          child: const Text('路由'),
+          onPressed:() {
+            Navigator.pushNamed(context, '/route_example');
+          },
+        ),
+      ),
     );
   }
 }

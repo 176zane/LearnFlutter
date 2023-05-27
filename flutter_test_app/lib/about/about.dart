@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class About extends StatefulWidget {
+  const About({super.key});
+
 
   @override
   State<About> createState() => _AboutState();

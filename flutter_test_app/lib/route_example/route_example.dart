@@ -9,7 +9,7 @@ class RouteExample extends StatefulWidget {
 
 class _RouteExampleState extends State<RouteExample> {
   Object? result;
-  var returnValue = '';
+  String returnValue = '';
 
   @override
   Widget build(BuildContext context) {

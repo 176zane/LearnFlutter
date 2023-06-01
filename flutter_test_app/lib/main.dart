@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/about/about.dart';
 import 'package:flutter_test_app/home/home.dart';
-import 'package:flutter_test_app/home/route_example.dart';
-import 'package:flutter_test_app/home/route_second.dart';
+import 'package:flutter_test_app/provider_shopper/models/shopper_cart_model.dart';
+import 'package:flutter_test_app/provider_shopper/models/shopper_catalog_model.dart';
+import 'package:flutter_test_app/route_example/route_example.dart';
+import 'package:flutter_test_app/route_example/route_second.dart';
 import 'package:flutter_test_app/pages/layout_page.dart';
-import 'package:http/http.dart';
+import 'package:flutter_test_app/provider_shopper/screens/shopper_cart.dart';
+import 'package:flutter_test_app/provider_shopper/screens/shopper_catalog.dart';
+import 'package:flutter_test_app/provider_shopper/screens/shopper_login.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(const MyApp()); 
@@ -14,18 +20,38 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        Provider(create: (context) => CatalogModel()),
+        // CartModel is implemented as a ChangeNotifier, which calls for the use
+        // of ChangeNotifierProvider. Moreover, CartModel depends
+        // on CatalogModel, so a ProxyProvider is needed.
+        ChangeNotifierProxyProvider<CatalogModel, CartModel>(
+          create: (context) => CartModel(),
+          update: (context, catalog, cart) {
+            if (cart == null) throw ArgumentError.notNull('cart');
+            cart.catalog = catalog;
+            return cart;
+          },
+        ),
+      ],
+      child:MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/':(context) => const MyHomePage(title: 'Flutter Demo'),
+          '/route_example' : (context) => const RouteExample(),
+          '/route_second' : (context) => const RouteSecond(),
+          '/layout' : (context) => const LayoutPage(),
+          '/shopper_login' : (context) => const MyLogin(),
+          '/shopper_catalog' : (context) => const MyCatalog(),
+          '/shopper_cart' : (context) => const MyCart(),
+          
+        },
       ),
-      initialRoute: '/',
-      routes: {
-        '/':(context) => const MyHomePage(title: 'Flutter Demo'),
-        '/route_example' : (context) => const RouteExample(),
-        '/route_second' : (context) => const RouteSecond(),
-        '/layout' : (context) => const LayoutPage(),
-      },
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_app/home/route_example.dart';
+import 'package:flutter_test_app/route_example/route_example.dart';
 
 class RouteSecond extends StatelessWidget {
   const RouteSecond({super.key});

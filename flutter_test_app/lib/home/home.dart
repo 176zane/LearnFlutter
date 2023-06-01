@@ -9,32 +9,44 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   void initState() {
-    print('initstate');
     super.initState();
   }
   @override
   void dispose() {
-    print('dispose');
     super.dispose();
   }
   @override
   Widget build(BuildContext context) {
-    print('build');
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('首页'),
-      ),
-      body:Center(
-        child: ElevatedButton(
-          child: const Text('路由'),
-          onPressed:() {
-            Navigator.pushNamed(context, '/route_example');
-          },
+        appBar: AppBar(
+          title: const Text('首页'),
         ),
-      ),
+        body:Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+             
+              children: [
+                ElevatedButton(
+                  child: const Text('路由'),
+                  onPressed:() {
+                    Navigator.pushNamed(context, '/route_example');
+                  },
+              ),
+                ElevatedButton(
+                  child: const Text('provider示例'),
+                  onPressed:() {
+                    Navigator.pushNamed(context, '/shopper_login');
+                  },
+              ),
+              ]
+            ),
+          ),
+        ),
     );
+     
   }
 }

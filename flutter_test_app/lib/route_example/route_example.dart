@@ -31,6 +31,10 @@ class _RouteExampleState extends State<RouteExample> {
                 setState(() {
                   returnValue = result.toString();
                 });
+               
+                // ignore: use_build_context_synchronously
+                ScaffoldMessenger.of(context).showSnackBar(
+                     SnackBar(content: Text(result.toString())));
             },
             child: const Text('路由传参'),
           ),

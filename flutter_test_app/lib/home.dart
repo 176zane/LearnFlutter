@@ -28,10 +28,10 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-             
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ElevatedButton(
-                  child: const Text('路由'),
+                  child: const Text('路由示例'),
                   onPressed:() {
                     Navigator.pushNamed(context, '/route_example');
                   },
@@ -40,6 +40,18 @@ class _HomeState extends State<Home> {
                   child: const Text('provider示例'),
                   onPressed:() {
                     Navigator.pushNamed(context, '/shopper_login');
+                  },
+              ),
+                ElevatedButton(
+                  child: const Text('http示例'),
+                  onPressed:() {
+                    Navigator.pushNamed(context, '/album');
+                  },
+              ),
+                ElevatedButton(
+                  child: const Text('Isolate示例'),
+                  onPressed:() {
+                    Navigator.pushNamed(context, '/photo');
                   },
               ),
               ]

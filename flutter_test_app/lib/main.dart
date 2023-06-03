@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/about/about.dart';
-import 'package:flutter_test_app/home/home.dart';
+import 'package:flutter_test_app/home.dart';
+import 'package:flutter_test_app/http_example/album.dart';
+import 'package:flutter_test_app/http_example/photo.dart';
 import 'package:flutter_test_app/provider_shopper/models/shopper_cart_model.dart';
 import 'package:flutter_test_app/provider_shopper/models/shopper_catalog_model.dart';
 import 'package:flutter_test_app/route_example/route_example.dart';
@@ -20,6 +22,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    //https://stackoverflow.com/questions/57124258/could-not-find-the-correct-provider-above-this-widget
     return MultiProvider(
       providers: [
         Provider(create: (context) => CatalogModel()),
@@ -49,6 +52,8 @@ class MyApp extends StatelessWidget {
           '/shopper_login' : (context) => const MyLogin(),
           '/shopper_catalog' : (context) => const MyCatalog(),
           '/shopper_cart' : (context) => const MyCart(),
+          '/album' : (context) => const MyAlbum(),
+          '/photo' : (context) => const MyPhoto(),
           
         },
       ),

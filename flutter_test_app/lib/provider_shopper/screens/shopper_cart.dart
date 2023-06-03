@@ -100,6 +100,13 @@ class _CartTotal extends StatelessWidget {
             //
             // The important thing is that it will not rebuild
             // the rest of the widgets in this build method.
+            //Consumer widget 唯一必须的参数就是 builder。当 ChangeNotifier 发生变化的时候会调用 builder 这个函数。
+            //builder 在被调用的时候会用到三个参数。第一个是 context。在每个 build 方法中都能找到这个参数。
+
+            //builder 函数的第二个参数是 ChangeNotifier 的实例。它是我们最开始就能得到的实例。你可以通过该实例定义 UI 的内容。
+
+            //第三个参数是 child，用于优化目的。如果 Consumer 下面有一个庞大的子树，当模型发生改变的时候，该子树 并不会 改变，那么你就可以仅仅创建它一次，然后通过 builder 获得该实例
+
             Consumer<CartModel>(
                 builder: (context, cart, child) =>
                     Text('\$${cart.totalPrice}', style: hugeStyle)),

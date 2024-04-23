@@ -31,29 +31,35 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ElevatedButton(
+                  child: const Text('布局示例'),
+                  onPressed:() {
+                    Navigator.pushNamed(context, '/layout');
+                  },
+                ),
+                ElevatedButton(
                   child: const Text('路由示例'),
                   onPressed:() {
                     Navigator.pushNamed(context, '/route_example');
                   },
-              ),
+                ),
                 ElevatedButton(
                   child: const Text('provider示例'),
                   onPressed:() {
                     Navigator.pushNamed(context, '/shopper_login');
                   },
-              ),
+                ),
                 ElevatedButton(
                   child: const Text('http示例'),
                   onPressed:() {
                     Navigator.pushNamed(context, '/album');
                   },
-              ),
+                ),
                 ElevatedButton(
-                  child: const Text('Isolate示例'),
+                  child: const Text('Isolate后台解析JSON示例'),
                   onPressed:() {
                     Navigator.pushNamed(context, '/photo');
                   },
-              ),
+                ),
               ]
             ),
           ),
